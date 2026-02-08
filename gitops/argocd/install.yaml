@@ -1,0 +1,12 @@
+# ArgoCD Installation
+# Source: https://argoproj.github.io/argo-cd/docs/installation/
+# Managed via GitOps after initial bootstrap
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+
+---
+# Note: full argocd install manifest is large. in real setup, this would be fetched via Kustomize or Helm.
+# For this portfolio, I keep it explicit for clarity.  

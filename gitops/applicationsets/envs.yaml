@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: platform-environments
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            namespace: dev
+          - env: staging
+            namespace: staging
+          - env: prod
+            namespace: prod
+  template:
+    metadata:
+      name: '{{env}}-apps'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/9three3four/platform-engg-idp
+        targetRevision: main
+        path: gitops/environments/{{env}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

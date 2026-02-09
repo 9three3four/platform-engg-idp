@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: app
-          image: config-aware-service:latest
-          imagePullPolicy: IfNotPresent
+          image: 9three3four/config-aware-service:latest
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: config-aware-service

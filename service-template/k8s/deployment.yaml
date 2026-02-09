@@ -1,19 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: new-app
+  name: config-aware-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: new-app
+      app: config-aware-service
   template:
     metadata:
       labels:
-        app: new-app
+        app: config-aware-service
     spec:
       containers:
         - name: app
-          image: new-app:latest
+          image: config-aware-service:latest
+          envFrom:
+            - configMapRef:
+                name: config-aware-service
           ports:
             - containerPort: 8080

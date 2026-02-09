@@ -1,26 +1,19 @@
-# Service Template
+# Config Aware Service
 
-This template defines the standard way services are built and deployed
-on the platform.
+This service exists to validate platform capabilities.
 
-## What this provides
-- Preconfigured CI pipeline
-- Kubernetes manifests
-- GitOps-compatible deployment
-- Production-safe defaults
+## What This Service Demonstrates
+- Environment-aware configuration
+- Externalized config via ConfigMaps
+- Safe rollouts through GitOps
+- Git-based rollback on failure
 
-## How to create a new service?
-1. Click "Use this template" in GitHub
-2. Rename the repository
-3. Push code to `main`
-4. Platform handles the rest
+## Intentional Failure Mode
+Setting FEATURE_FLAG=break will:
+- Cause health check failures
+- Trigger rollback scenarios
+- Validate platform recovery workflows
 
-## What devs do not need to know?
-- Kubernetes internals
-- Argo CD configuration
-- Environment promotion mechanics
-
-## Supported environments
-- dev
-- staging
-- prod
+## Ownership Model
+- Application code: developer-owned
+- Configuration & rollout: platform-owned

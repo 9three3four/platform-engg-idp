@@ -17,3 +17,10 @@ Setting FEATURE_FLAG=break will:
 ## Ownership Model
 - Application code: developer-owned
 - Configuration & rollout: platform-owned
+
+## Build Context
+
+The Docker build context is scoped to the service-template directory.
+This avoids coupling application builds to repository root structure
+and mirrors how platform-managed pipelines operate.
+

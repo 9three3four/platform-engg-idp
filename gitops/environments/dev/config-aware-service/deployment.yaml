@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-aware-service
+  labels:
+    app: config-aware-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-aware-service
+  template:
+    metadata:
+      labels:
+        app: config-aware-service
+    spec:
+      containers:
+        - name: app
+          image: config-aware-service:latest
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: config-aware-service
+          ports:
+            - containerPort: 8080

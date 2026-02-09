@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-aware-service
+data:
+  APP_ENV: dev
+  FEATURE_FLAG: off

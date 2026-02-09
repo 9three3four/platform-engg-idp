@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-aware-service
+data:
+  APP_ENV: staging
+  FEATURE_FLAG: off

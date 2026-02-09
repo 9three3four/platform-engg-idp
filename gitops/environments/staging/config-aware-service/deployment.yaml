@@ -22,4 +22,4 @@ spec:
             - configMapRef:
                 name: config-aware-service
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
